@@ -48,24 +48,63 @@ class API():
     
     def get_data_from_api(self, site_id):
         
-        try:
-            data = self.api_connect(f'val/wxfcs/all/json/{site_id}?res=3hourly&')
-            filtered = data['SiteRep']['DV']['Location']['Period']
-            
-            codes = [i['Rep'] for i in filtered]
-            temp = []
-            weather = []
-
-            for day in codes:
-                for hours in day:
-                    temp.append(hours['T'])
-                    weather.append(hours['W'])
-                
-            #return filtered       
-            return [temp, weather]
+        #try:
+        data = self.api_connect(f'val/wxfcs/all/json/{site_id}?res=3hourly&')
+        filtered = data['SiteRep']['DV']['Location']['Period']
+               
+        codes = [data['Rep'] for data in filtered]
+        dates = [data['value'] for data in filtered]
+        temp = []
+        weather = []
         
-        except:
-            print('Place not known. Enter the name of a UK town or city')
+        for i in codes:
+            temp_itr = [t['T'] for t in i]
+            weather_itr = [w['W'] for w in i]
+            
+            temp.append(temp_itr)
+            weather.append(weather_itr)
+            
+        all_days = {dates[i] : [temp[i], weather[i]] for i in range(len(dates))}
+            
+
+        return all_days
+        
+        # all_days = {}
+        
+        # for day in codes:
+        #     for i in day:
+        #         print(day)
+        #         all_days.update({day:i['T']})
+    
+    
+        # for a in filtered:
+        #     day = a['value']
+        #     #all_days.update(a['value'])
+        #     code = a['Rep']
+        #     for b in code:
+        #         all_days.update({day:b['T']})
+        #         #     days.append(f't={i["T"]}')
+        #         #     days.append(f'w={i["W"]}')
+                       
+        ##return all_days
+            
+            
+            # codes = [i['Rep'] for i in filtered]
+            # temp = []
+            # weather = []
+
+            # for day in codes:
+            #     for hours in day:
+            #         temp.append(hours['T'])
+            #         weather.append(hours['W'])
+                
+            # #return filtered       
+            # return [temp, weather]
+            
+            #return filtered
+        
+        # except:
+        #     print('Place not known. Enter the name of a UK town or city')
             
 
 APIkey = '940b74af-8410-4516-9326-e39b07de8cdd'
@@ -73,8 +112,8 @@ interface = API(APIkey)
 
 site_id = interface.get_site_id_from_user_input('London')
 
-print (interface.get_timestamp())
+# print (interface.get_timestamp())
 print (interface.get_data_from_api(site_id))
 
-print (len(interface.get_timestamp()))
-print (len(interface.get_data_from_api(site_id)[0]))
+# print (len(interface.get_timestamp()))
+# print (len(interface.get_data_from_api(site_id)[0]))
