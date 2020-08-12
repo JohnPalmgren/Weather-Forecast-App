@@ -60,14 +60,12 @@ class API():
         for i in codes:
             temp_itr = [t['T'] for t in i]
             weather_itr = [w['W'] for w in i]
-            
             temp.append(temp_itr)
             weather.append(weather_itr)
             
-        all_days = {dates[i] : [temp[i], weather[i]] for i in range(len(dates))}
+        #all_days = {dates[i] : [temp[i], weather[i]] for i in range(len(dates))}
             
-
-        return all_days
+        return [dates, temp, weather]
         
         # all_days = {}
         
@@ -107,13 +105,12 @@ class API():
         #     print('Place not known. Enter the name of a UK town or city')
             
 
-APIkey = '940b74af-8410-4516-9326-e39b07de8cdd'
-interface = API(APIkey)
+# APIkey = '940b74af-8410-4516-9326-e39b07de8cdd'
+# interface = API(APIkey)
 
-site_id = interface.get_site_id_from_user_input('London')
+# site_id = interface.get_site_id_from_user_input('London')
 
-# print (interface.get_timestamp())
-print (interface.get_data_from_api(site_id))
+# data = (interface.get_data_from_api(site_id))
 
-# print (len(interface.get_timestamp()))
-# print (len(interface.get_data_from_api(site_id)[0]))
+# for i in data:
+#     print(i[0])
