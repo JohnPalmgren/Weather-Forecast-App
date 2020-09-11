@@ -43,19 +43,13 @@ notebook.add(frame5, text=process.tabs()[4])
 
 
 
-user_input = Entry(root, width=60)
-user_input.grid(row=1, column=0)
-
-
-
-    
-
-def template(data, time, frame): #make day 5-2 template
+def template(image, temp, time, frame): 
 
         
-    img_lst = [images(data[14][i]) for i in range(8)]
-        
-    temp_list = data[13]
+    img_lst = [images(image[i]) for i in range(8)]
+
+    temp_list = temp
+
     
     time_lab1 = Label(frame, text=time[0])
     time_lab2 = Label(frame, text=time[1])
@@ -214,7 +208,6 @@ def day1(data, time):
         pass
     
 
-
 def click():
     
 
@@ -223,14 +216,24 @@ def click():
     data = process.split_lists(api_data, 5)
     time = process.time_intervals(8)
 
-
-    template(data, time, frame5)
-    template(data, time, frame4)
-    template(data, time, frame3)
-    template(data, time, frame2)
+    day5_image = data[14]
+    day5_temp = data[13]
+    day4_image = data[11]
+    day4_temp = data[10]
+    day3_image = data[8]
+    day3_temp = data[7]
+    day2_image = data[5]
+    day2_temp = data[4]
+    
+    template(day5_image, day5_temp, time, frame5)
+    template(day4_image, day4_temp, time, frame4)
+    template(day3_image, day3_temp, time, frame3)
+    template(day2_image, day2_temp, time, frame2)
 
     day1(data, time)    
 
+user_input = Entry(root, width=60)
+user_input.grid(row=1, column=0)
 
 search = Button(root, text='search', command=click)
 search.grid(row=1, column=1)
