@@ -41,6 +41,10 @@ def time_intervals(items):
     return selection[::-1]
     
 
-def images():
-    pass
+def user_input(inp):
+    
+    inp = inp.title()
+    
+    return inp
+    
 
