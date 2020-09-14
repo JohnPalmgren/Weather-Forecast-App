@@ -40,7 +40,6 @@ class API():
 
     def get_data_from_api(self, site_id):
         
-        #try:
         data = self.api_connect(f'val/wxfcs/all/json/{site_id}?res=3hourly&')
         filtered = data['SiteRep']['DV']['Location']['Period']
                
