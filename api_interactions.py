@@ -23,4 +23,8 @@ def split_lists(lists, items):
     return new_list
 
 
+# time = interface.get_timestamp()
+
+# print(time)
+
 #api_data('London')

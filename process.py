@@ -20,7 +20,7 @@ def tabs():
 
 def time_intervals(items):
     
-    times = ['00:00','21:00','18:00', '15:00', '12:00', '9:00', '6:00', '3:00']
+    times = ['21:00','18:00', '15:00', '12:00', '9:00', '6:00', '3:00', '00:00']
     selection = times[:items]
     
     return selection[::-1]

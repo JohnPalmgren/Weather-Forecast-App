@@ -42,12 +42,10 @@ class API():
         
         data = self.api_connect(f'val/wxfcs/all/json/{site_id}?res=3hourly&')
         filtered = data['SiteRep']['DV']['Location']['Period']
-               
         codes = [data['Rep'] for data in filtered]
         dates = [data['value'] for data in filtered]
         temp = []
         weather = []
-        
         for i in codes:
             temp_itr = [t['T'] for t in i]
             weather_itr = [w['W'] for w in i]
