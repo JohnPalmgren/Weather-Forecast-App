@@ -274,3 +274,4 @@ class WeatherForecast:
             self.template(day2_image, day2_temp, time, frame2)
         
             self.day1(data, time)    
+            

@@ -13,4 +13,4 @@ familiarity with using APIs and creating a GUI using the Tkinter Python Library.
 
 ## Results
 
-![](forcast.gif)
+![](forecast.gif)
