@@ -1,6 +1,5 @@
 import time
 
-
 def tabs():
     """Return a list of the next 5 days starting with today"""
     

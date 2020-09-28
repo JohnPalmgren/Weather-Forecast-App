@@ -2,8 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from PIL import ImageTk, Image
 import process
-import api_interactions
-
+import api
 
 class WeatherForcast:
     """Graphic user interface for weather forcast."""
@@ -136,7 +135,7 @@ class WeatherForcast:
         """Function for inserting time, temperature and weather labels into
         frame1
         data(list): API data with weather and time and temperature information.
-        timeslots(list): timeslots to be displayed
+        timeslots(list): time relating to each weather icon being displayed.
         """
     
         time = timeslots[8-len(data[1]):]
@@ -234,14 +233,16 @@ class WeatherForcast:
         match any of the API locations.
         """        
         
+        
         inp_label = Label(self.master, text='', bg='#f0f0f0', width=45)
         inp_label.grid(row=2, column=0, columnspan=2)
 
         user_input = self.user_input.get().title()
         
+        interface = api.ApiInteractions(api.APIkey)
+        
         try:
-            data = api_interactions.api_data(user_input)
-
+            data = interface.api_data(user_input)
             return data
 
         except:
@@ -273,8 +274,3 @@ class WeatherForcast:
             self.template(day2_image, day2_temp, time, frame2)
         
             self.day1(data, time)    
-        
-        
-root = Tk()
-weather = WeatherForcast(root)
-root.mainloop()
