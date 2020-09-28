@@ -1,5 +1,5 @@
 from PIL import Image
 
-filen = r'30.png'
+filen = r'top_icon.webp'
 img = Image.open(filen)
-img.save('30.ico',format = 'ICO', sizes=[(120,60)])
+img.save('top_icon.ico',format = 'ICO', sizes=[(16,16)])

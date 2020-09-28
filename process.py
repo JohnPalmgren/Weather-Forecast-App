@@ -18,21 +18,13 @@ def tabs():
     return tabs
 
 
-def time_intervals(items):
+def time_intervals(n):
+    """Return a list of length n in reverse order.
+    items(int): Number of timeslots to be returned.
+    """
     
     times = ['21:00','18:00', '15:00', '12:00', '9:00', '6:00', '3:00', '00:00']
-    selection = times[:items]
+    selection = times[:n]
     
     return selection[::-1]
     
-
-
-def user_input(inp): #incorporate and expand
-    
-    inp = inp.title()
-    
-    return inp
-    
-
-
-
