@@ -4,6 +4,8 @@ from PIL import ImageTk, Image
 import process
 import api
 
+interface = api.ApiInteractions(api.APIkey)
+
 class WeatherForecast:
     """Graphic user interface for weather forcast."""
     
@@ -238,8 +240,6 @@ class WeatherForecast:
         inp_label.grid(row=2, column=0, columnspan=2)
 
         user_input = self.user_input.get().title()
-        
-        interface = api.ApiInteractions(api.APIkey)
         
         try:
             data = interface.api_data(user_input)
