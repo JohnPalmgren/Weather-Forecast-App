@@ -4,15 +4,15 @@ from PIL import ImageTk, Image
 import process
 import api
 
-class WeatherForcast:
+class WeatherForecast:
     """Graphic user interface for weather forcast."""
     
     def __init__(self, master):
         
         self.master = master
-        self.master.title('5 Day Weather Forcast')
+        self.master.title('5 Day Weather Forecast')
         self.master.iconbitmap('icons/top_icon.ico')
-        self.toplabel = Label(master, text='5 day forcast')
+        self.toplabel = Label(master, text='5 Day Forecast')
         self.toplabel.grid(row=0, column=0, columnspan=2)
         self.notebook()
         self.user_input = Entry(master, width=50)
